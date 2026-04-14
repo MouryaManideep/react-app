@@ -4,7 +4,7 @@ function App() {
   const [data, setData] = useState("Loading...");
 
   useEffect(() => {
-    fetch("http://13.218.147.9:5000")
+    fetch("http://13.218.147.9:5000/")
       .then((res) => res.text())
       .then((data) => setData(data))
       .catch(() => setData("Error connecting to backend"));
