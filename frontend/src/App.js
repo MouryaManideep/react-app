@@ -4,10 +4,17 @@ function App() {
   const [data, setData] = useState("Loading...");
 
   useEffect(() => {
-    fetch("https://nonvaried-libratory-camdyn.ngrok-free.dev/")
+    fetch("https://nonvaried-libratory-camdyn.ngrok-free.dev", {
+      headers: {
+        "ngrok-skip-browser-warning": "true"
+      }
+    })
       .then((res) => res.text())
       .then((data) => setData(data))
-      .catch(() => setData("Error connecting to backend"));
+      .catch((err) => {
+        console.error(err);
+        setData("Error connecting to backend");
+      });
   }, []);
 
   return (
