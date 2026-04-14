@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [msg, setMsg] = useState("");
+  const [data, setData] = useState("");
 
-useEffect(() => {
-  fetch("http://your-ec2-ip:5000")
-    .then(res => res.text())
-    .then(data => setMsg(data))
-    .catch(err => console.error("ERROR:", err));
-}, []);
-  return <h1>{msg}</h1>;
+  useEffect(() => {
+    fetch("http://13.218.147.9:5000")
+      .then(res => res.text())
+      .then(data => setData(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Backend Response:</h1>
+      <p>{data}</p>
+    </div>
+  );
 }
 
 export default App;
